@@ -1,0 +1,32 @@
+<h4>{{message}}</h4>
+
+<section>
+
+	<ul class="thumbnails">
+      <li class="col-xs-3" ng-repeat="lista in listas">
+		<div class="thumbnail">
+			<img src="img/nophoto1.jpg">
+			<div class="caption">
+				<h4><strong>{{lista.nome}}</strong></h4>
+				<p>
+				   &bull; Itens na lista: <strong>{{lista.qtde}}</strong> </br> 
+				   &bull; Valor Total: <strong>{{lista.total | currency}}</strong>
+				</p>
+	
+				<a href="#lista/{{lista.codigo}}/{{lista.nome}}" class="btn btn-primary" title="Abrir/Editar">Abrir</a> 
+				<button class="btn btn-danger pull-right" ng-confirm-click="Excluir a lista {{lista.nome}} e seus itens?" confirmed-click="excluiLista({{lista.codigo}},$index)" title="Excluir esta lista">Excluir</button>
+			</div>
+		</div>
+	  </li>
+	</ul>
+	
+	
+    <div class="row">
+	  <div class="col-xs-12">
+        <input class="span1" id="nome_lista" ng-model="nm_lista" type="text">
+        <button class="btn btn-success" ng-click="addLista()">Nova lista</button>
+	  </div>
+    </div>
+	
+</section>
+
