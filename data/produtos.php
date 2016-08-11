@@ -14,7 +14,7 @@ if ($request == 'GET')
 	$sql = "select cd_lista, cd_produto, nm_produto, qt_produto, vl_produto, id_cesta 
 			from produto
 			where 1 $add_sql
-			order by nm_produto";
+			order by cd_produto";
 	$res = mysqli_query($conn,$sql);
 
 	while ($row = mysqli_fetch_assoc($res))

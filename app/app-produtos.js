@@ -4,17 +4,14 @@
   app.controller('listaCtrl', ['$scope', '$http', '$filter', '$routeParams', function($scope, $http, $filter, $routeParams){
 		$scope.id = $routeParams.id;
 		$scope.nm = $routeParams.nm;
-		$scope.buscando = 1;
 		$scope.produtos = [];
 		
 		// carrega produtos da lista
 		$http.get("data/produtos.php?lista="+$scope.id).success(function(data){
-			$scope.buscando = 1;
 			if (!data)
 				$scope.addItem();
 			else 
 				$scope.produtos = data;
-			$scope.buscando = 0;
 		}).error(function(data, status, headers, config){
 			alert("Falha ao buscar dados!");
 		});
