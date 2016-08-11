@@ -8,7 +8,7 @@ Aplicativo para gerenciar listas de compras
 *Tecnologias Utilizadas:*
 - HTML
 - CSS
-- Bootstrap (framework de front-end)
+- Bootstrap (framework front-end)
 - AngularJS (framework Javascript)
 - PHP (webservice)
 - MySQL (banco de dados)
@@ -21,3 +21,6 @@ Aplicativo para gerenciar listas de compras
 - img/ para para imagens das listas (melhorias futuras)
 - js/ arquivos javascripts dos frameworks
 - / arquivos html
+
+*Link com a demonstração aplicativo:*
+- http://shop-list.esy.es
