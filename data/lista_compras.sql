@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/08/2016 às 04:22
+-- Tempo de geração: 11/08/2016 às 16:49
 -- Versão do servidor: 5.6.15-log
 -- Versão do PHP: 5.5.8
 
@@ -19,9 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `compras`
 --
-CREATE DATABASE IF NOT EXISTS `compras`;
 
-USE `compras`;
 -- --------------------------------------------------------
 
 --
@@ -34,14 +32,16 @@ CREATE TABLE IF NOT EXISTS `lista` (
   `dt_cadastro` datetime NOT NULL,
   PRIMARY KEY (`cd_lista`),
   UNIQUE KEY `nm_lista` (`nm_lista`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='listas de compras' AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='listas de compras' AUTO_INCREMENT=5 ;
 
 --
 -- Fazendo dump de dados para tabela `lista`
 --
 
 INSERT INTO `lista` (`cd_lista`, `nm_lista`, `dt_cadastro`) VALUES
-(23, 'Mercado', '2016-08-10 14:54:47');
+(1, 'Mercado', '2016-08-10 14:54:47'),
+(2, 'Farmácia', '2016-08-10 14:55:05'),
+(3, 'Teste1', '2016-08-10 15:18:14');
 
 -- --------------------------------------------------------
 
@@ -57,19 +57,30 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `vl_produto` decimal(10,2) NOT NULL,
   `id_cesta` smallint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`cd_produto`),
-  UNIQUE KEY `nm_produto` (`nm_produto`),
   KEY `cd_lista` (`cd_lista`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='produtos para compras' AUTO_INCREMENT=208 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='produtos para compras' AUTO_INCREMENT=17 ;
 
 --
 -- Fazendo dump de dados para tabela `produto`
 --
 
 INSERT INTO `produto` (`cd_produto`, `cd_lista`, `nm_produto`, `qt_produto`, `vl_produto`, `id_cesta`) VALUES
-(204, 23, 'pão', 1, '2.00', 0),
-(205, 23, 'arroz', 2, '4.50', 0),
-(206, 23, 'macarrão', 1, '10.50', 0),
-(207, 23, 'vinho', 3, '27.90', 0);
+(1, 1, 'pão', 1, '2.00', 0),
+(2, 1, 'arroz', 2, '4.50', 0),
+(3, 1, 'macarrão', 1, '10.50', 0),
+(4, 1, 'vinho', 3, '27.90', 0),
+(5, 2, 'chá', 1, '3.20', 0),
+(6, 3, 'teste1', 5, '7.00', 0),
+(7, 3, 'teste10', 6, '35.90', 0),
+(8, 3, 'teste11', 6, '11.80', 0),
+(9, 3, 'teste2', 10, '6.00', 0),
+(10, 3, 'teste3', 19, '13.00', 0),
+(11, 3, 'teste4', 18, '13.00', 0),
+(12, 3, 'teste5', 45, '6.00', 0),
+(13, 3, 'teste6', 7, '32.00', 0),
+(14, 3, 'teste7', 5, '10.00', 0),
+(15, 3, 'teste8', 7, '3.00', 0),
+(16, 3, 'teste9', 59, '10.00', 0);
 
 --
 -- Restrições para dumps de tabelas

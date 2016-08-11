@@ -1,7 +1,6 @@
-h1{
-	border-bottom: 1px solid #eee;
-	padding-bottom: 5px;
-	margin-bottom: 20px;
+body {
+  padding-top: 80px;
+  padding-bottom: 20px;
 }
 h2,h3{
 	padding: 0;
@@ -29,12 +28,11 @@ ul.thumbnails li{
 }
 
 input[type=number] {
-	width: 95%;
+	width: 100%;
 	max-width: 120px;
 }
 
 input[type=text] {
-	width: 95%;
 	max-width: 250px;
 }
 

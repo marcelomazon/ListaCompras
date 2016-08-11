@@ -19,7 +19,6 @@
 	app.controller('homeCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter){
 		$scope.message = "Minhas Listas de Compras";
 		$scope.nm_lista = '';
-
 		$scope.listas = [];
 
 		$http.get("data/listas.php").success(function(data){
@@ -28,6 +27,7 @@
 			alert("Falha ao buscar dados!");
 		});
 
+		// cadastra lista
 		$scope.addLista = function(){
 			if ($scope.nm_lista != ''){
 				$http.post('data/listas.php', $scope.nm_lista).success(function(data){
@@ -45,7 +45,8 @@
 				
 			}
 		};
-
+		
+		// exclusão da lista
         $scope.excluiLista = function(lista,indice){
             $http.delete('data/listas.php?id='+lista).success(function(data) {
 				$scope.listas.splice(indice, 1);
@@ -69,7 +70,15 @@
 				});
 			}
 		};
-	}])
+	}]);
+	
+	app.directive("rodaPe", function() {
+		return {
+			restrict:"A",
+			templateUrl: "rodape.html"
+		};
+	});
+	
 
 	
 })();

@@ -1,45 +1,52 @@
-<form class="form" name="myForm">
+<div class="row">
+  <div class="col-xs-12">
+	<h2><a href="#/home" class="btn btn-primary btn-mini" role="button"><</a> {{nm}}
+	<input type="button" class="btn btn-success pull-right" ng-click="salvaProdutos()" value="Salvar Lista" /></h2>
+  </div>
+</div>
 
-    <div class="row">
-	  <div class="col-xs-12">
-		<h2><a href="#/home" class="btn btn-primary btn-mini" role="button"><</a> {{nm}}
-		<input type="button" class="btn btn-success pull-right" ng-click="salvaProdutos()" value="Salvar Lista" /></h2>
-	  </div>
-	</div>
-	
-	<table class="table table-hover">
-	
-	  <thead>
-		<tr>
-			<th>Produto</th>
-			<th>Quantidade</th>
-			<th>R$</th>
-			<th>R$ Item </th>
-			<th>Cesta</th>
-			<th>&nbsp;</th>
-		</tr>
-	  </thead>
-	  
-	  <tbody>
-		<tr ng-repeat="item in produtos | filter:nome" ng-class="{success:item.cesta===1}">
-            <td><input type="text" ng-model="item.nome" value="{{item.nome}}" class="input-small" placeholder="Produto" required></td>           
-            <td><input type="number" ng-model="item.qtde" value="{{item.qtde}}" class="input-mini text-right" placeholder="Quantidade" step="any" /></td>
-            <td><input type="number" ng-model="item.valor" value="{{item.valor}}" class="input-mini text-right" placeholder="Valor" step="any" /></td>
-			<td class="text-center">R{{item.valor * item.qtde | currency}}</td>
-			<td class="text-center"><input type="checkbox" ng-model="item.cesta" ng-true-value="1" ng-false-value="0" value="{{item.cesta}}" ng-checked="{{item.cesta === 1}}" title="Adicionar na cesta" /></td> 
-			<td><button class="btn btn-mini btn-danger pull-right" title="Remover item da lista" ng-click="removeItem($index)">X</button></td>
-		</tr>
+<div class="row">
+  <div class="col-xs-12">
+
+	<form class="form" name="myForm">
+		<div ng-show={buscando:1}>carregando lista</div>
+		<table class="table table-hover">
+
+		  <thead>
+			<tr>
+				<th>Produto</th>
+				<th>Quantidade</th>
+				<th>R$</th>
+				<th>R$ Item </th>
+				<th>Cesta</th>
+				<th>&nbsp;</th>
+			</tr>
+		  </thead>
+		  
+		  <tbody>
+			<tr ng-repeat="item in produtos | filter:busca" ng-class="{success:item.cesta===1}">
+				<td><input type="text" ng-model="item.nome" value="{{item.nome}}" placeholder="Produto" required></td>           
+				<td><input type="number" ng-model="item.qtde" value="{{item.qtde}}" min="0" class="input-mini text-right" placeholder="Quantidade" step="any" /></td>
+				<td><input type="number" ng-model="item.valor" value="{{item.valor}}" min="0	" class="input-mini text-right" placeholder="Valor" step="any" /></td>
+				<td class="text-center">R{{item.valor * item.qtde | currency}}</td>
+				<td class="text-center"><input type="checkbox" ng-model="item.cesta" ng-true-value="1" ng-false-value="0" value="{{item.cesta}}" ng-checked="{{item.cesta === 1}}" title="Adicionar na cesta" /></td> 
+				<td><button class="btn btn-mini btn-danger pull-right" title="Remover item da lista" ng-click="removeItem($index)">X</button></td>
+			</tr>
+			
+			<tr>
+				<td><input type="button" ng-click="addItem()" class="btn btn-primary" value="Novo item" /></td>
+				<td>&nbsp;</td>
+				<td><strong>Total</strong></td>
+				<td class="text-center"><strong>R{{getValorTotal() | currency}}</strong></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		  </tbody>
+
+		</table>
 		
-		<tr>
-			<td><input type="button" ng-click="addItem()" class="btn btn-primary" value="Novo item" /></td>
-			<td>&nbsp;</td>
-			<td><strong>Total</strong></td>
-			<td class="text-center"><strong>R{{getValorTotal() | currency}}</strong></td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-	  </tbody>
-	  
-	</table>
+	</form>
 	
-</form>
+   </div>
+   
+</div>
