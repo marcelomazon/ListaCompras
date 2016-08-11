@@ -1,0 +1,5 @@
+[
+	{"nome": "Cerveja",	"qtde": 5, "valor": 9.5,  "cesta": false},
+    {"nome": "Carne",  	"qtde": 5, "valor": 19.5, "cesta": false},
+	{"nome": "Carvao", 	"qtde": 4, "valor": 8.5,  "cesta": false}
+]
